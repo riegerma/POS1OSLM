@@ -15,7 +15,7 @@ Kunden registrieren sich über die App per mobilem Device oder PC bei der Bank u
 Folgende funktionale Anforderungen gelten für das Projekt:
 1. Kunden sollen sich selbst registrieren können.
 2. Kunden und alle anderen Benutzer des Systems sollen sich einloggen können.
-3. Nach einem Login sollen Benutzer solange eingeloggt bleiben, bis sie sich wieder abmelden oder aber den Browser schließen.
+3. Nach einem Login sollen Benutzer so lange eingeloggt bleiben, bis sie sich wieder abmelden oder aber den Browser schließen.
 4. Benutzer haben verschiedene Rollen: Es gibt zwei Rollen: „Kunde“, „Angestellter“.
 5. Angestellte werden vorab „händisch“ in die Datenbank eingetragen (es gibt also keinen Registrierungsprozess).
 6. Kunden haben genau 1 Konto, das sie gleich bei der Registrierung bekommen. Für dieses Bankkonto werden folgende Informationen gespeichert: Kontostand, alle Kontobewegungen (Einzahlungen, Auszahlungen), IBAN, BIC und Verfüger (=Kunde).
@@ -101,4 +101,3 @@ Was wird alles benötigt?
 
 * Beleg drucken
 * Logout
-

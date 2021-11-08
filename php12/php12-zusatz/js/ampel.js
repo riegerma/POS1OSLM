@@ -24,15 +24,14 @@ function calculateBmi() {
 }
 
 function getAmpelImage(bmi) {
-    console.log("getAmpelImage");
     if (bmi < 18.5) {
-        return "<img src='/pos1OSLM/php12/php12-zusatz/images/ampel_gelb.png'/>";
+        return "<img src='/php12-zusatz/images/ampel.png'/>";
     } else if (bmi < 25) {
-        return "<img src='/pos1OSLM/php12/php12-zusatz/images/ampel_gruen.png'/>";
+        return "<img src='/php12-zusatz/images/ampel_gruen.png'/>";
     } else if (bmi < 30) {
-        return "<img src='/pos1OSLM/php12/php12-zusatz/images/ampel_gelb.png'/>";
+        return "<img src='/php12-zusatz/images/ampel_gelb.png'/>";
     } else {
-        return "<img src='/pos1OSLM/php12/php12-zusatz/images/ampel_rot.png'/>";
+        return "<img src='/php12-zusatz/images/ampel_rot.png'/>";
     }
 }
 
