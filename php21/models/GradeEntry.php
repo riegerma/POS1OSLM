@@ -11,10 +11,7 @@ class GradeEntry
 
     private $errors = [];
 
-    public function __construct()
-    {
-
-    }
+    public function __construct(){}
 
     public static function getAll()
     {
