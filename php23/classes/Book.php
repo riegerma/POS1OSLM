@@ -33,10 +33,9 @@ class Book
         return null;
     }
 
-    public function decreaseInStock($n){
-        $this->inStock -= $n;
+    public function getId(){
+        return $this->id;
     }
-
     public function getTitle(){
         return $this->title;
     }
@@ -48,10 +47,4 @@ class Book
     public function getInStock(){
         return $this->inStock;
     }
-
-    public function getId(){
-        return $this->id;
-    }
 }
-
-?>

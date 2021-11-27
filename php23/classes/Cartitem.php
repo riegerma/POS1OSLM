@@ -3,19 +3,26 @@
 class Cartitem
 {
 
-    private static $counter = 0;
-    public $list = [];
+    public static $counter;
+    private $book;
+    private $amount;
 
-    public static function getCounter(){
-        return self::$counter;
-    }
-
-    public static function increaseCounter(){
+    public function __construct($book, $amount)
+    {
+        $this->book = $book;
+        $this->amount = $amount;
         self::$counter++;
     }
 
-    public static function decreaseCounter(){
-        self::$counter--;
+    public function getBook()
+    {
+        return $this->book;
+    }
+
+    public function getAmount()
+    {
+        return $this->amount;
     }
 }
+
 ?>
