@@ -1,9 +1,22 @@
 <?php
 session_start();
 include "classes/Book.php";
-require_once "classes/Cart.php";
+include "classes/Cart.php";
+
 $cart = new Cart();
-$_SESSION['cart'] = serialize($cart);
+
+for ($i = 1; $i <= count(Book::getAll()); $i++) {
+    $submitName = "submit$i";
+    if (isset($_POST[$submitName])) {
+        echo "<script>alert('IF')</script>";
+        $book = Book::get($i);
+        var_dump($book);
+        $cart->add($book, $_POST['select' . $i]);
+        header("Location: einkaufswagen.php");
+    }
+    unset($_POST[$submitName]);
+    unset($_POST['select' . $i]);
+}
 ?>
 
 <!doctype html>
@@ -18,7 +31,7 @@ $_SESSION['cart'] = serialize($cart);
 </head>
 <body>
 <div class="container mt-5 col-sm-4">
-    <form action="einkaufswagen.php" method="post">
+    <form action="index.php" method="post">
         <div class="form form-group">
             <div class="row">
                 <h1 class="col-sm-8">Bücher</h1>
@@ -38,7 +51,7 @@ $_SESSION['cart'] = serialize($cart);
                     echo "<tr><td class='font-weight-bold'>" . $book->getTitle() . "</td></tr>";
                     echo "<td>€ " . $book->getPrice() . "</td>";
                     echo "<tr><td colspan='80%'>Menge: </td>";
-                    echo "<td><select name='select$i'>" . createDropDown($book->getInStock()) . "</select></td>";
+                    echo "<td><select name='select$i' id='select$i'>" . createDropDown($book->getInStock()) . "</select></td>";
                     echo "<td><button type='submit' name='submit$i'>submit$i</button></td></tr>";
                     echo "<tr style='border-bottom:1px solid black'><td colspan='100%'></td><td>";
                     $i++;
