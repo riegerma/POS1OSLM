@@ -1,16 +1,14 @@
 <?php
 session_start();
-include "classes/Book.php";
-include "classes/Cart.php";
+include "models/Book.php";
+include "models/Cart.php";
 
 $cart = new Cart();
 
 for ($i = 1; $i <= count(Book::getAll()); $i++) {
     $submitName = "submit$i";
     if (isset($_POST[$submitName])) {
-        echo "<script>alert('IF')</script>";
-        $book = Book::get($i);
-        var_dump($book);
+        $book = Book::get($_POST['id'.$i]);
         $cart->add($book, $_POST['select' . $i]);
         header("Location: einkaufswagen.php");
     }
@@ -38,7 +36,7 @@ for ($i = 1; $i <= count(Book::getAll()); $i++) {
                 <input type="button"
                        class="btn btn-secondary col-sm-4"
                        id="warenkorb"
-                       value="Warenkorb: "
+                       value="Warenkorb: <?php echo sizeof($cart->getList()) ?>"
                        onclick="location.href='einkaufswagen.php'">
             </div>
 
@@ -48,17 +46,17 @@ for ($i = 1; $i <= count(Book::getAll()); $i++) {
                 $i = 1;
                 $cartList = $cart->getList();
                 foreach ($allBooks as $book) {
-                    foreach ($cartList as $list){
-                        if ($list->getBook()->getId() == $book->getId()){
+                    foreach ($cartList as $list) {
+                        if ($list->getBook()->getId() == $book->getId()) {
                             $book->setInStock($book->getInStock() - $list->getAmount());
                         }
                     }
-                    echo "<input type='hidden' name='id$i' value='id$i'" . $book->getId() . ">";
+                    echo "<input type='hidden' name='id$i' id='id$i' value=" . $book->getId() . ">";
                     echo "<tr><td class='font-weight-bold'>" . $book->getTitle() . "</td></tr>";
                     echo "<td>€ " . $book->getPrice() . "</td>";
                     echo "<tr><td colspan='80%'>Menge: </td>";
                     echo "<td><select name='select$i' id='select$i'>" . createDropDown($book->getInStock()) . "</select></td>";
-                    echo "<td><button type='submit' name='submit$i'>submit$i</button></td></tr>";
+                    echo "<td><button type='submit' name='submit$i'>Hinzufügen</button></td></tr>";
                     echo "<tr style='border-bottom:1px solid black'><td colspan='100%'></td><td>";
                     $i++;
                 }

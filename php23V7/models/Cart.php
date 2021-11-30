@@ -1,5 +1,5 @@
 <?php
-include "classes/Cartitem.php";
+include "models/Cartitem.php";
 
 class Cart
 {
@@ -28,6 +28,13 @@ class Cart
     public function add($book, $count)
     {
         $this->list = $this->loadCookie();
+        foreach ($this->list as $item){
+            if($item->getBook()->getId() == $book->getId()){
+                $item->setAmount($item->getAmount() + $count);
+                $this->saveCookie();
+                return;
+            }
+        }
         array_push($this->list, new Cartitem($book, $count));
         $this->saveCookie();
     }

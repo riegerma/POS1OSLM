@@ -3,7 +3,6 @@
 class Cartitem
 {
 
-    public static $counter;
     private $book;
     private $amount;
 
@@ -11,7 +10,6 @@ class Cartitem
     {
         $this->book = $book;
         $this->amount = $amount;
-        self::$counter++;
     }
 
     public function getBook()
@@ -22,6 +20,10 @@ class Cartitem
     public function getAmount()
     {
         return $this->amount;
+    }
+
+    public function setAmount($new){
+        $this->amount = $new;
     }
 
 }
