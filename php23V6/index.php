@@ -46,7 +46,13 @@ for ($i = 1; $i <= count(Book::getAll()); $i++) {
                 <?php
                 $allBooks = Book::getAll();
                 $i = 1;
+                $cartList = $cart->getList();
                 foreach ($allBooks as $book) {
+                    foreach ($cartList as $list){
+                        if ($list->getBook()->getId() == $book->getId()){
+                            $book->setInStock($book->getInStock() - $list->getAmount());
+                        }
+                    }
                     echo "<input type='hidden' name='id$i' value='id$i'" . $book->getId() . ">";
                     echo "<tr><td class='font-weight-bold'>" . $book->getTitle() . "</td></tr>";
                     echo "<td>€ " . $book->getPrice() . "</td>";

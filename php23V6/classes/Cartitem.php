@@ -23,6 +23,7 @@ class Cartitem
     {
         return $this->amount;
     }
+
 }
 
 ?>

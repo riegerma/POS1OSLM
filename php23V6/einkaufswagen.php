@@ -33,7 +33,6 @@ $cart = new Cart();
 
             if (isset($_COOKIE['all'])) {
                 $cartList = $cart->getList();
-                var_dump($cartList);
                 $j = 1;
                 foreach ($cartList as $item) {
                     $book = $item->getBook();

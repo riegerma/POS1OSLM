@@ -47,4 +47,8 @@ class Book
     public function getInStock(){
         return $this->inStock;
     }
+
+    public function setInStock($new){
+        $this->inStock = $new;
+    }
 }
